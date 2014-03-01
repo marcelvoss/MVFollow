@@ -39,6 +39,10 @@
                     if (statusCode == 404) {
                         NSLog(@"Not Found");
                     }
+                    else if (statusCode == 403)
+                    {
+                        NSLog(@"Forbidden");
+                    }
                     else if (statusCode == 200)
                     {
                         NSLog(@"Success");
