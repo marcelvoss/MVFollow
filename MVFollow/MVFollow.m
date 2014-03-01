@@ -18,7 +18,7 @@
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error)
     {
-        if (granted)
+        if (granted == YES)
         {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             if ([accounts count] > 0)
@@ -34,7 +34,7 @@
                 [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
                 {
                     NSInteger statusCode = [urlResponse statusCode];
-                    NSLog(@"Status Code: %li", statusCode);
+                    NSLog(@"Status Code: %li", (long)statusCode);
                     
                     if (statusCode == 404) {
                         NSLog(@"Not Found");
