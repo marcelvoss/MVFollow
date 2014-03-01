@@ -10,3 +10,7 @@ Both methods are VERY easy to use and pretty much self explanatory. There's also
 `+ (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient;`
 
 Feel free to add more Twitter clients!
+
+## TODO
+- Add multi-account support  
+(If more than one account is stored in AccountStore)
