@@ -33,20 +33,37 @@
                 
                 [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
                 {
-                    if (error == nil)
-                    {
-                        NSLog(@"Followed: %@", username);
+                    NSInteger statusCode = [urlResponse statusCode];
+                    NSLog(@"Status Code: %li", statusCode);
+                    
+                    if (statusCode == 404) {
+                        NSLog(@"Not Found");
                     }
-                    else
+                    else if (statusCode == 200)
                     {
-                        NSLog(@"The following error occured: %@", error);
+                        NSLog(@"Success");
+                    }
+                    else if (statusCode == 500)
+                    {
+                        NSLog(@"Internal Server Error");
+                    }
+                    else if (statusCode == 502)
+                    {
+                        NSLog(@"Bad Gateway");
+                    }
+                    else if (statusCode == 503)
+                    {
+                        NSLog(@"Service Unavailable");
+                    }
+                    else if (statusCode == 504)
+                    {
+                        NSLog(@"Gateway Timeout");
+                    }
+                    
+                    if (error != nil) {
+                        NSLog(@"%@", error);
                     }
                 }];
-            }
-            else
-            {
-                // More than one accounts are available
-                
             }
         }
     }];
