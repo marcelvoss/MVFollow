@@ -38,7 +38,7 @@
 - (IBAction)openProfileButton:(id)sender
 {
     // Replace TwitterClientOfficial with the Twitter client of your choice
-    [MVFollow openProfile:self.usernameTextField.text inClient:TwitterClientWeb];
+    [MVFollow openProfile:self.usernameTextField.text inClient:TwitterClientOfficial];
 }
 
 @end

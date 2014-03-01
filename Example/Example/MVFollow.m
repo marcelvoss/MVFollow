@@ -29,12 +29,12 @@
     }
     else if (twitterClient == TwitterClientTweetbot)
     {
-        NSString *clientWithUsername = [NSString stringWithFormat:@"tweetbot://%@", username];
+        NSString *clientWithUsername = [NSString stringWithFormat:@"tweetbot:///user_profile/%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
     else if (twitterClient == TwitterClientTwitterrific)
     {
-        NSString *clientWithUsername = [NSString stringWithFormat:@"twitterrific://profile?=screen_name=%@", username];
+        NSString *clientWithUsername = [NSString stringWithFormat:@"twitterrific:///profile?screen_name=%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
 }
