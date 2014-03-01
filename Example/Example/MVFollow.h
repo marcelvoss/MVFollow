@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
+
+typedef NS_ENUM(NSInteger, TwitterClient)
+{
+    TwitterClientWeb,
+    TwitterClientTweetbot,
+    TwitterClientTwitterrific,
+    TwitterClientOfficial
+};
 
 @interface MVFollow : NSObject
+
++ (void)followUser:(NSString *)username;
++ (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient;
 
 @end
