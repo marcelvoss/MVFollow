@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3DE45E18C27BCA00E9915E /* MVFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DE45D18C27BCA00E9915E /* MVFollow.m */; };
 		1F7A930618C15D3800D2F128 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7A930518C15D3700D2F128 /* Foundation.framework */; };
 		1F7A930818C15D3800D2F128 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7A930718C15D3800D2F128 /* CoreGraphics.framework */; };
 		1F7A930A18C15D3800D2F128 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7A930918C15D3800D2F128 /* UIKit.framework */; };
@@ -23,7 +24,6 @@
 		1F7A933118C15D3800D2F128 /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7A933018C15D3800D2F128 /* ExampleTests.m */; };
 		1F7A933B18C15D4100D2F128 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7A933A18C15D4100D2F128 /* Social.framework */; };
 		1F7A933D18C15D4700D2F128 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7A933C18C15D4700D2F128 /* Accounts.framework */; };
-		1F7A934218C15D7300D2F128 /* MVFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7A934118C15D7300D2F128 /* MVFollow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F3DE45C18C27BCA00E9915E /* MVFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MVFollow.h; path = ../../MVFollow/MVFollow.h; sourceTree = "<group>"; };
+		1F3DE45D18C27BCA00E9915E /* MVFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MVFollow.m; path = ../../MVFollow/MVFollow.m; sourceTree = "<group>"; };
 		1F7A930218C15D3700D2F128 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7A930518C15D3700D2F128 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1F7A930718C15D3800D2F128 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,8 +60,6 @@
 		1F7A933018C15D3800D2F128 /* ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTests.m; sourceTree = "<group>"; };
 		1F7A933A18C15D4100D2F128 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1F7A933C18C15D4700D2F128 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		1F7A934018C15D7300D2F128 /* MVFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVFollow.h; sourceTree = "<group>"; };
-		1F7A934118C15D7300D2F128 /* MVFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVFollow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,8 +175,8 @@
 		1F7A933F18C15D5E00D2F128 /* MVFollow */ = {
 			isa = PBXGroup;
 			children = (
-				1F7A934018C15D7300D2F128 /* MVFollow.h */,
-				1F7A934118C15D7300D2F128 /* MVFollow.m */,
+				1F3DE45C18C27BCA00E9915E /* MVFollow.h */,
+				1F3DE45D18C27BCA00E9915E /* MVFollow.m */,
 			);
 			name = MVFollow;
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 			files = (
 				1F7A931C18C15D3800D2F128 /* ViewController.m in Sources */,
 				1F7A931618C15D3800D2F128 /* AppDelegate.m in Sources */,
+				1F3DE45E18C27BCA00E9915E /* MVFollow.m in Sources */,
 				1F7A931218C15D3800D2F128 /* main.m in Sources */,
-				1F7A934218C15D7300D2F128 /* MVFollow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +490,7 @@
 				1F7A933618C15D3800D2F128 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F7A933718C15D3800D2F128 /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +499,7 @@
 				1F7A933918C15D3800D2F128 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
