@@ -21,7 +21,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    self.usernameTextField.placeholder = @"Handle";
+    self.usernameTextField.placeholder = @"Enter a Twitter username!";
 }
 
 - (void)didReceiveMemoryWarning

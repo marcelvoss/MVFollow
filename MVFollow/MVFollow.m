@@ -21,7 +21,7 @@
         if (granted == YES)
         {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
-            if ([accounts count] > 0)
+            if ([accounts count] == 0)
             {
                 // Only one account is available
                 NSMutableDictionary *dictionary = [NSMutableDictionary new];
