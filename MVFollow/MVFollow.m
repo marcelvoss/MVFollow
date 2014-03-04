@@ -20,6 +20,9 @@
     {
         if (granted == YES)
         {
+            // Account Access was granted
+            NSLog(@"Access to Account Store was granted.");
+            
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             if ([accounts count] > 0)
             {
@@ -69,6 +72,12 @@
                     }
                 }];
             }
+        }
+        else
+        {
+            // Account Access was not granted
+            NSLog(@"Access to Account Store was NOT granted.");
+            [self openProfile:username inClient:TwitterClientWeb];
         }
     }];
 }
