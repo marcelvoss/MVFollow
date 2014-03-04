@@ -15,7 +15,8 @@ typedef NS_ENUM(NSInteger, TwitterClient)
     TwitterClientWeb,
     TwitterClientTweetbot,
     TwitterClientTwitterrific,
-    TwitterClientOfficial
+    TwitterClientOfficial,
+    TwitterClientTweetings
 };
 
 @interface MVFollow : NSObject

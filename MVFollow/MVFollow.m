@@ -84,24 +84,34 @@
 
 + (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient
 {
+    // Twitter.app
     if (twitterClient == TwitterClientOfficial)
     {
         NSString *clientWithUsername = [NSString stringWithFormat:@"twitter://user?screen_name=%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
+    // Website
     else if (twitterClient == TwitterClientWeb)
     {
         NSString *clientWithUsername = [NSString stringWithFormat:@"http://twitter.com/%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
+    // Tweetbot <3
     else if (twitterClient == TwitterClientTweetbot)
     {
         NSString *clientWithUsername = [NSString stringWithFormat:@"tweetbot:///user_profile/%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
+    // Twitterrific
     else if (twitterClient == TwitterClientTwitterrific)
     {
         NSString *clientWithUsername = [NSString stringWithFormat:@"twitterrific:///profile?screen_name=%@", username];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
+    }
+    // Tweetings
+    else if (twitterClient == TwitterClientTweetings)
+    {
+        NSString *clientWithUsername = [NSString stringWithFormat:@"tweetings:///user?screen_name=%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
 }
