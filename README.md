@@ -18,5 +18,5 @@ If you use CocoaPods you can simply add `pod 'MVFollow'` to your podfile.
 Feel free to add more Twitter clients!
 
 ## TODO
-- Add multi-account support 
-- Add a method to find out what Twitter clients are installed
+- <del>Add multi-account support</del>
+- Add a method to find out which Twitter clients are installed
