@@ -31,16 +31,13 @@
 {
     ACAccountStore *accountStore = [ACAccountStore new];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error)
-    {
-        if (granted == YES)
-        {
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        if (granted == YES) {
             // Account Access was granted
             NSLog(@"Access to Account Store was granted.");
             
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
-            if ([accounts count] > 0)
-            {
+            if ([accounts count] == 1) {
                 // Only one account is available
                 NSMutableDictionary *dictionary = [NSMutableDictionary new];
                 [dictionary setObject:@"true" forKey:@"follow"];
@@ -49,36 +46,29 @@
                 SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:TWITTER_API_URL] parameters:dictionary];
                 [request setAccount:[accounts objectAtIndex:0]];
                 
-                [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
-                {
+                [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                     NSInteger statusCode = [urlResponse statusCode];
                     NSLog(@"Status Code: %li", (long)statusCode);
                     
                     if (statusCode == 404) {
                         NSLog(@"Not Found");
                     }
-                    else if (statusCode == 403)
-                    {
+                    else if (statusCode == 403) {
                         NSLog(@"Forbidden");
                     }
-                    else if (statusCode == 200)
-                    {
+                    else if (statusCode == 200) {
                         NSLog(@"Success");
                     }
-                    else if (statusCode == 500)
-                    {
+                    else if (statusCode == 500) {
                         NSLog(@"Internal Server Error");
                     }
-                    else if (statusCode == 502)
-                    {
+                    else if (statusCode == 502) {
                         NSLog(@"Bad Gateway");
                     }
-                    else if (statusCode == 503)
-                    {
+                    else if (statusCode == 503) {
                         NSLog(@"Service Unavailable");
                     }
-                    else if (statusCode == 504)
-                    {
+                    else if (statusCode == 504) {
                         NSLog(@"Gateway Timeout");
                     }
                     
@@ -86,10 +76,14 @@
                         NSLog(@"%@", error);
                     }
                 }];
+            } else {
+                // If more than one account is available
+                NSString *baseURL = @"http://twitter.com/";
+                NSString *twitterURL = [baseURL stringByAppendingString:username];
+                NSLog(@"URL: %@", twitterURL);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterURL]];
             }
-        }
-        else
-        {
+        } else {
             // Account Access was not granted
             NSLog(@"Access to Account Store was NOT granted.");
             [self openProfile:username inClient:TwitterClientWeb];
