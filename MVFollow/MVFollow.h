@@ -25,18 +25,28 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
-typedef NS_ENUM(NSInteger, TwitterClient)
+typedef enum
 {
     TwitterClientWeb,
     TwitterClientTweetbot,
     TwitterClientTwitterrific,
     TwitterClientOfficial,
     TwitterClientTweetings
-};
+} TwitterClient;
 
 @interface MVFollow : NSObject
 
+/**
+ Follow a user directly without a client.
+ @param username The username to follow.
+*/
 + (void)followUser:(NSString *)username;
+
+/**
+ Show a Twitter profile in a client.
+ @param username The username to show
+ @param twitterClient The client to show the user profile in.
+*/
 + (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient;
 
 @end

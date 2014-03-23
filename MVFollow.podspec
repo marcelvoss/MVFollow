@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MVFollow"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "MVFollow is a lightweight drop-in solution that allows you to follow people on Twitter."
   s.homepage     = "https://github.com/CocoaMarcel/MVFollow"
   s.license      = {
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '6.0'
   s.source       = {
     :git => "https://github.com/CocoaMarcel/MVFollow.git",
-    :tag => "0.1.2"
+    :tag => "0.1.3"
   }
   s.source_files  = 'MVFollow/*.{h,m}'
   s.frameworks = 'Social', 'Accounts'
