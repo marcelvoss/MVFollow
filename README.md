@@ -1,5 +1,5 @@
 # MVFollow
-MVFollow is a lightweight drop-in solution that allows you to follow people on Twitter.
+MVFollow is a drop-in solution that allows you to follow people on Twitter.
 
 ## Usage
 This project provides two methods: One method to follow someone on Twitter and a second method to show Twitter profiles in installed clients (like Tweetbot, Twitterrific or the official client).
