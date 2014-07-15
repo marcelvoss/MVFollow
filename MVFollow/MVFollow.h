@@ -21,12 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// CURRENTLY SUPPORTED CLIENTS: Twitter.app, Tweetbot, Twitterrific, and Tweetings.
+
 #import <Foundation/Foundation.h>
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
-typedef enum
-{
+typedef enum {
     TwitterClientWeb,
     TwitterClientTweetbot,
     TwitterClientTwitterrific,
@@ -48,5 +49,11 @@ typedef enum
  @param twitterClient The client to show the user profile in.
 */
 - (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient;
+
+- (void)checkIfClientisInstalled:(TwitterClient)twitterClient;
+
+@property BOOL isClientInstalled;
+@property UIActionSheet *multiaccountsheet;
+
 
 @end

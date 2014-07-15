@@ -22,7 +22,6 @@
 // THE SOFTWARE.
 
 #import "MVFollow.h"
-
 #define TWITTER_API_URL @"https://api.twitter.com/1.1/friendships/create.json"
 
 @implementation MVFollow
@@ -38,8 +37,8 @@
             
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
             if ([accounts count] == 1) {
-                // Only one account is available
-                NSLog(@"Only one account is available.");
+             // Only one account is available
+                NSLog(@"Only one account is available (%@", accounts);
                 
                 NSMutableDictionary *parameters = [NSMutableDictionary new];
                 [parameters setObject:@"true" forKey:@"follow"];
@@ -61,20 +60,37 @@
                     }
                 }];
             } else {
-                // If more than one account is available
-                NSLog(@"More than one account is available.");
+                // If more than one account is available than select the most used one and use it (a better solution is being worked on).
+                NSLog(@"Twitter Accounts Stored On Device: %@", accounts);
+                NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+                    NSMutableDictionary *parameters = [NSMutableDictionary new];
+                    [parameters setObject:@"true" forKey:@"follow"];
+                    [parameters setObject:username forKey:@"screen_name"];
+                    SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:TWITTER_API_URL] parameters:parameters];
+                    [request setAccount:[accounts objectAtIndex:0]];
                 
-                NSString *baseURL = @"http://twitter.com/";
-                NSString *twitterURL = [baseURL stringByAppendingString:username];
-                NSLog(@"URL: %@", twitterURL);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:twitterURL]];
+                [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                    NSInteger statusCode = [urlResponse statusCode];
+                    
+                    if (statusCode == 200) {
+                        NSLog(@"Status Code: %li (Request was successful)", (long)statusCode);
+                        BOOL success = YES;
+                        completion(success, error);
+                    } else {
+                        NSLog(@"Status Code: %li (Something went wrong, could not follow user)", (long)statusCode);
+                        BOOL success = NO;
+                        completion(success, error);
+                    }
+                }];
+
             }
         } else {
-            // Account Access was not granted
+            // Account Access was not granted or account not found
             NSLog(@"NOT granted");
             [self openProfile:username inClient:TwitterClientWeb];
         }
     }];
+    
 }
 
 - (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient
@@ -110,5 +126,77 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
 }
+
+
+//Check if a certain client is installed (Official Client, Web Client, Tweetbot, Tweetings, Twitterrific). This method will return a YES for true or a FALSE for false. Example: ("TRUE, Tweetbot is installed).
+- (void)checkIfClientisInstalled:(TwitterClient)twitterClient {
+
+if (twitterClient == TwitterClientOfficial) {
+    
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]])
+        {
+            _isClientInstalled = YES;
+            NSLog(@"%@, Twitter is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+
+            
+        } else {
+            _isClientInstalled = NO;
+            NSLog(@"%@, Twitter is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+
+        }
+}
+    
+
+if (twitterClient == TwitterClientWeb) {
+    
+        NSLog(@"YES, Safari can open the web client");
+    
+        //No if statement as Safari itself does not have "http://" registered as a native URL scheme, So it would return NO even though it can open "http://" requests.
+    }
+    
+    
+if (twitterClient == TwitterClientTweetbot) {
+        
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetbot://"]])
+        {
+            _isClientInstalled = YES;
+            NSLog(@"%@, Tweetbot is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+            
+        } else {
+            _isClientInstalled = NO;
+            NSLog(@"%@, Tweetbot is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+        }
+    }
+    
+    if (twitterClient == TwitterClientTwitterrific) {
+        
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitterrific://"]])
+        {
+            _isClientInstalled = YES;
+            NSLog(@"%@, Twitterrific is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+            
+        } else {
+            _isClientInstalled = NO;
+            NSLog(@"%@, Twitterrific is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+        }
+    }
+    
+    if (twitterClient == TwitterClientTweetings) {
+        
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetings://"]])
+        {
+            _isClientInstalled = YES;
+            NSLog(@"%@, Tweetings is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+            
+        } else {
+            _isClientInstalled = NO;
+            NSLog(@"%@, Tweetings is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+
+        }
+    }
+    
+    
+}
+
 
 @end
