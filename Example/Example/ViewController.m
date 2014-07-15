@@ -73,11 +73,11 @@
 //Check all clients to see if they are installed on the user's device (Results are in the log)w
 - (IBAction)checkClientInstall:(id)sender {
     MVFollow *clientLib = [[MVFollow alloc] init];
-    [clientLib checkIfClientisInstalled:TwitterClientTwitterrific];
-    [clientLib checkIfClientisInstalled:TwitterClientOfficial];
-    [clientLib checkIfClientisInstalled:TwitterClientWeb];
-    [clientLib checkIfClientisInstalled:TwitterClientTweetings];
-    [clientLib checkIfClientisInstalled:TwitterClientTweetbot];
+    [clientLib checkIfClientIsInstalled:TwitterClientTwitterrific];
+    [clientLib checkIfClientIsInstalled:TwitterClientOfficial];
+    [clientLib checkIfClientIsInstalled:TwitterClientWeb];
+    [clientLib checkIfClientIsInstalled:TwitterClientTweetings];
+    [clientLib checkIfClientIsInstalled:TwitterClientTweetbot];
 }
 
 //Open a profile within a client.
@@ -94,7 +94,7 @@
         });} else {
 
     MVFollow *followLib = [[MVFollow alloc] init];
-    [followLib checkIfClientisInstalled:TwitterClientOfficial];
+    [followLib checkIfClientIsInstalled:TwitterClientOfficial];
     if (followLib.isClientInstalled == NO) {
         NSLog(@"Opening profile with web client because requested client is not installed.");
         [followLib openProfile:self.usernameTextField.text inClient:TwitterClientWeb];

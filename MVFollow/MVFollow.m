@@ -94,32 +94,27 @@
 - (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient
 {
     // Twitter.app
-    if (twitterClient == TwitterClientOfficial)
-    {
+    if (twitterClient == TwitterClientOfficial) {
         NSString *clientWithUsername = [NSString stringWithFormat:@"twitter://user?screen_name=%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
     // Website
-    else if (twitterClient == TwitterClientWeb)
-    {
+    else if (twitterClient == TwitterClientWeb) {
         NSString *clientWithUsername = [NSString stringWithFormat:@"http://twitter.com/%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
     // Tweetbot <3
-    else if (twitterClient == TwitterClientTweetbot)
-    {
+    else if (twitterClient == TwitterClientTweetbot) {
         NSString *clientWithUsername = [NSString stringWithFormat:@"tweetbot:///user_profile/%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
     // Twitterrific
-    else if (twitterClient == TwitterClientTwitterrific)
-    {
+    else if (twitterClient == TwitterClientTwitterrific) {
         NSString *clientWithUsername = [NSString stringWithFormat:@"twitterrific:///profile?screen_name=%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
     // Tweetings
-    else if (twitterClient == TwitterClientTweetings)
-    {
+    else if (twitterClient == TwitterClientTweetings) {
         NSString *clientWithUsername = [NSString stringWithFormat:@"tweetings:///user?screen_name=%@", username];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:clientWithUsername]];
     }
@@ -127,72 +122,60 @@
 
 
 //Check if a certain client is installed (Official Client, Web Client, Tweetbot, Tweetings, Twitterrific). This method will return a YES for true or a FALSE for false. Example: ("TRUE, Tweetbot is installed).
-- (void)checkIfClientIsInstalled:(TwitterClient)twitterClient {
-
-if (twitterClient == TwitterClientOfficial) {
-    
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]])
-        {
-            _isClientInstalled = YES;
-            NSLog(@"%@, Twitter is installed.", (_isClientInstalled ? @"YES" : @"NO"));
-
+- (void)checkIfClientIsInstalled:(TwitterClient)twitterClient
+{
+    switch (twitterClient) {
+        case TwitterClientOfficial:
             
-        } else {
-            _isClientInstalled = NO;
-            NSLog(@"%@, Twitter is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://"]]) {
+                _isClientInstalled = YES;
+                NSLog(@"%@, Twitter is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+            } else {
+                _isClientInstalled = NO;
+                NSLog(@"%@, Twitter is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+            }
 
-        }
-}
-    
+            break;
+        case TwitterClientTweetings:
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetings://"]]) {
+                _isClientInstalled = YES;
+                NSLog(@"%@, Tweetings is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+            } else {
+                _isClientInstalled = NO;
+                NSLog(@"%@, Tweetings is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+            }
 
-if (twitterClient == TwitterClientWeb) {
-    
-        NSLog(@"YES, Safari can open the web client");
-    
-        //No if statement as Safari itself does not have "http://" registered as a native URL scheme, So it would return NO even though it can open "http://" requests.
-    }
-    
-    
-if (twitterClient == TwitterClientTweetbot) {
-        
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetbot://"]])
-        {
-            _isClientInstalled = YES;
-            NSLog(@"%@, Tweetbot is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+            break;
+        case TwitterClientTweetbot:
             
-        } else {
-            _isClientInstalled = NO;
-            NSLog(@"%@, Tweetbot is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
-        }
-    }
-    
-    if (twitterClient == TwitterClientTwitterrific) {
-        
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitterrific://"]])
-        {
-            _isClientInstalled = YES;
-            NSLog(@"%@, Twitterrific is installed.", (_isClientInstalled ? @"YES" : @"NO"));
-            
-        } else {
-            _isClientInstalled = NO;
-            NSLog(@"%@, Twitterrific is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
-        }
-    }
-    
-    if (twitterClient == TwitterClientTweetings) {
-        
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetings://"]])
-        {
-            _isClientInstalled = YES;
-            NSLog(@"%@, Tweetings is installed.", (_isClientInstalled ? @"YES" : @"NO"));
-            
-        } else {
-            _isClientInstalled = NO;
-            NSLog(@"%@, Tweetings is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetbot://"]]) {
+                _isClientInstalled = YES;
+                NSLog(@"%@, Tweetbot is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+                
+            } else {
+                _isClientInstalled = NO;
+                NSLog(@"%@, Tweetbot is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+            }
 
-        }
+            break;
+        case TwitterClientTwitterrific:
+            
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitterrific://"]]) {
+                _isClientInstalled = YES;
+                NSLog(@"%@, Twitterrific is installed.", (_isClientInstalled ? @"YES" : @"NO"));
+            } else {
+                _isClientInstalled = NO;
+                NSLog(@"%@, Twitterrific is not installed and cannot be used.", (_isClientInstalled ? @"YES" : @"NO"));
+            }
+            
+            break;
+        case TwitterClientWeb:
+            NSLog(@"YES, Safari can open the web client");
+            
+            //No if statement as Safari itself does not have "http://" registered as a native URL scheme, So it would return NO even though it can open "http://" requests.
+            
+            break;
     }
-    
     
 }
 
