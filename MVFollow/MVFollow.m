@@ -32,10 +32,9 @@
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
         if (granted == YES) {
-            // Account Access was granted
-            NSLog(@"Granted");
             
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            
             if ([accounts count] == 1) {
              // Only one account is available
                 NSLog(@"Only one account is available (%@", accounts);
@@ -86,7 +85,6 @@
             }
         } else {
             // Account Access was not granted or account not found
-            NSLog(@"NOT granted");
             [self openProfile:username inClient:TwitterClientWeb];
         }
     }];
@@ -129,7 +127,7 @@
 
 
 //Check if a certain client is installed (Official Client, Web Client, Tweetbot, Tweetings, Twitterrific). This method will return a YES for true or a FALSE for false. Example: ("TRUE, Tweetbot is installed).
-- (void)checkIfClientisInstalled:(TwitterClient)twitterClient {
+- (void)checkIfClientIsInstalled:(TwitterClient)twitterClient {
 
 if (twitterClient == TwitterClientOfficial) {
     

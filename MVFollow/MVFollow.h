@@ -50,7 +50,7 @@ typedef enum {
 */
 - (void)openProfile:(NSString *)username inClient:(TwitterClient)twitterClient;
 
-- (void)checkIfClientisInstalled:(TwitterClient)twitterClient;
+- (void)checkIfClientIsInstalled:(TwitterClient)twitterClient;
 
 @property BOOL isClientInstalled;
 @property UIActionSheet *multiaccountsheet;
