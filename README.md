@@ -5,7 +5,7 @@ This library requires **iOS 6 or later**.
 
 ## Installation
 ### CocoaPods
-MVDribbbleKit is available via CocoaPods. Simply add this to your Podfile: `pod 'MVFollow', '~> 0.2.0'` and install it with `pod install`. Boom!
+MVFollow is available via CocoaPods. Simply add this to your Podfile: `pod 'MVFollow', '~> 0.2.0'` and install it with `pod install`. Boom!
 
 ### Without CocoaPods
 Download the latest version, add the MVFollow folder to your project and import it.
