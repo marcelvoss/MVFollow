@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "615A064E13221EAF47FEB5F082BBE0A59C531395",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "615A064E13221EAF47FEB5F082BBE0A59C531395" : 9223372036854775807,
+    "72AAB1C05C2E63B4D8803EFF44EE8305AA0815B0" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "40E574C6-ADD6-4230-9ACB-D3425E43DC25",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "615A064E13221EAF47FEB5F082BBE0A59C531395" : "MVFollow\/",
+    "72AAB1C05C2E63B4D8803EFF44EE8305AA0815B0" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Demo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Demo\/Demo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/marcelvoss\/MVFollow.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "615A064E13221EAF47FEB5F082BBE0A59C531395"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/marcelvoss\/InstapaperKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "72AAB1C05C2E63B4D8803EFF44EE8305AA0815B0"
+    }
+  ]
+}
