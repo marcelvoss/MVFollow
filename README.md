@@ -33,7 +33,8 @@ Although, it's a bit inconvient, you'll have to add the following schemes to the
 - twitter
 - twitteriffic
 
-You can also take a look at the Info.plist file included in the demo application.
+
+![](https://raw.githubusercontent.com/marcelvoss/MVFollow/develop/Preview/preview.png)
 
 ## License
 MVFollow is available under the MIT license. See the [LICENSE](https://github.com/marcelvoss/MVFollow/blob/master/LICENSE.md) file for more information.
