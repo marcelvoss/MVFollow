@@ -29,10 +29,11 @@ You can then pass the selected account instance back to MVFollow.
 
 Although, it's a bit inconvient, you'll have to add the following schemes to the LSApplicationQueriesSchemes array in your application's Info.plist, in order to enable MVFollow to query for installed Twitter clients. Otherwise, iOS will always fail opening it. 
 
-- tweetbot
-- twitter
-- twitteriffic
-
+| Scheme| App |
+|:--|:--|
+|tweetbot|[Tweetbot](http://tapbots.com/tweetbot/)|
+|twitter|[Twitter](https://twitter.com)|
+|twitteriffic|[Twitteriffic](http://twitterrific.com/ios/)|
 
 ![](https://raw.githubusercontent.com/marcelvoss/MVFollow/develop/Preview/preview.png)
 
