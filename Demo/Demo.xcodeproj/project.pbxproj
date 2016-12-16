@@ -316,6 +316,7 @@
 				1F66F1C11E0037DE007D6546 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

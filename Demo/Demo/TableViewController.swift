@@ -127,16 +127,30 @@ class TableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             if indexPath.row == 1 {
-                
+                followPerson(handle: textField.text)
             }
         } else if indexPath.section == 2 {
             if UserDefaults.standard.bool(forKey: "FollowPerson") {
-                
+                followPerson(handle: currentFollow.handle)
             } else {
-                follow.showProfile(username: currentFollow.handle!)
+                _ = follow.showProfile(username: currentFollow.handle!)
             }
         }
     
+    }
+    
+    func followPerson(handle: String?) {
+        if let username = handle {
+            follow.accounts { (accounts, granted, error) in
+                if error == nil && granted {
+                    if let actionSheet = self.follow.actionSheet(accounts: accounts, username: username) {
+                        DispatchQueue.main.sync {
+                            self.present(actionSheet, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func switchValueChanged() {
