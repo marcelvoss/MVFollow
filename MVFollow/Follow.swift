@@ -18,12 +18,12 @@ class Follow: NSObject {
         if let accountArray = accounts {
             let actionSheet = UIAlertController(title: nil, message: "Choose account for following @\(username)", preferredStyle: .actionSheet)
             
-            for item in accountArray {
-                actionSheet.addAction(UIAlertAction(title: item.username, style: .default, handler: { (action) in
-                    self.follow(username: username, account: item, completionHandler: { (success, error) in
+            for account in accountArray {
+                actionSheet.addAction(UIAlertAction(title: account.username, style: .default, handler: { (action) in
+                    self.follow(username: username, account: account, completionHandler: { (success, error) in
                         actionSheet.dismiss(animated: true, completion: {
                             if error != nil {
-                                let alertController = UIAlertController(title: "Error", message: "Couldn't follow @\(username) with error \(error?.localizedDescription).", preferredStyle: .alert)
+                                let alertController = UIAlertController(title: "Error", message: "Couldn't follow @\(username). \(error?.localizedDescription).", preferredStyle: .alert)
                                 
                                 alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                                 UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
@@ -83,12 +83,13 @@ class Follow: NSObject {
     // MARK: - Private
     
     private func openApplication(string: String) -> Bool {
+        var successful = false
         if let url = URL(string: string) {
             UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
-                // TODO: Add handling
+                successful = success
             })
         }
-        return false
+        return successful
     }
     
     private func canOpenApplication(identifier: String) -> Bool {
@@ -112,8 +113,6 @@ class Follow: NSObject {
             }
         })
     }
-    
-    
     
 }
 
