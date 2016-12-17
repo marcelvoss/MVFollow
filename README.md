@@ -3,7 +3,7 @@
 
 MVFollow is a tiny drop-in solution that allows you to follow people on Twitter.
 
-This library requires **iOS 8 or later**.
+This library requires **iOS 10 or later**.
 
 ## Installation
 ### CocoaPods
