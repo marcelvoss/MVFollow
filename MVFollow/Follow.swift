@@ -14,6 +14,12 @@ class Follow: NSObject {
     
     var availableAccounts: [ACAccount]?
     
+    /// Generates a UIAlertController with action sheet style, including actions for every Twitter account that was found in the ACAccountStore. The actions are configured as well and will follow the specified user with an account selected by the user.
+    ///
+    /// - Parameters:
+    ///   - accounts: The account array that shall be used to generate the action sheet.
+    ///   - username: The username that shall be followed.
+    /// - Returns: A UIAlertController with action sheet style.
     func actionSheet(accounts: [ACAccount]?, username: String) -> UIAlertController? {
         if let accountArray = accounts {
             let actionSheet = UIAlertController(title: nil, message: "Choose account for following @\(username)", preferredStyle: .actionSheet)
@@ -39,6 +45,9 @@ class Follow: NSObject {
         return nil
     }
     
+    /// Retrieves an array of ACAccounts with the ACAccountTypeIdentifierTwitter.
+    ///
+    /// - Parameter completionHandler: A closure with an array of ACAccounts, a boolean determining wether the retrival was succesful and an error instance containing a more described error description.
     func accounts(completionHandler:@escaping ([ACAccount]?, Bool, Error?) -> Void) {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountType(withAccountTypeIdentifier: ACAccountTypeIdentifierTwitter)
@@ -52,6 +61,12 @@ class Follow: NSObject {
         }
     }
     
+    /// Follows the user with the specified username with the specified account.
+    ///
+    /// - Parameters:
+    ///   - username: The user to follow.
+    ///   - account: The account that shall follow.
+    ///   - completionHandler: A closure containing a boolean for determining wether following was successful and an error instance containing a more described error description.
     func follow(username: String, account: ACAccount, completionHandler:@escaping (Bool, Error?) -> Void) {
         let requestParameters = ["follow": "true", "screen_name": username]
         performFollowRequest(account: account, parameters: requestParameters, completionHandler: { (error) in
@@ -63,6 +78,10 @@ class Follow: NSObject {
         })
     }
     
+    /// Opens the profile of the specified user in an installed Twitter client or in Safari.
+    ///
+    /// - Parameter username: The user's Twitter handle.
+    /// - Returns: A boolean determining wether it was possible to open the Twitter profile.
     func showProfile(username: String) -> Bool {
         if canOpenApplication(identifier: "twitter://") {
             // Twitter.app
