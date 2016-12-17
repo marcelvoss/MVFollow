@@ -9,10 +9,6 @@ This library requires **iOS 10 or later**.
 ### CocoaPods
 MVFollow is available via CocoaPods. Simply add this to your Podfile: `pod 'MVFollow', '~> 0.3.0'` and install it with `pod install`. Boom!
 
-### Carthage
-
-
-
 ### Manually
 Download the latest version, add the MVFollow folder to your project and import it.
 
