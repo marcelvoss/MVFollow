@@ -1,5 +1,5 @@
 # MVFollow
-![](https://img.shields.io/cocoapods/v/AFNetworking.svg) ![](https://img.shields.io/badge/Swift-3.1-orange.svg)
+![](https://img.shields.io/cocoapods/v/MVFollow.svg) ![](https://img.shields.io/badge/Swift-3.0-orange.svg)
 
 MVFollow is a tiny drop-in solution that allows you to follow people on Twitter.
 
