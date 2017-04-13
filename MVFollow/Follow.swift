@@ -29,7 +29,7 @@ class Follow: NSObject {
                     self.follow(username: username, account: account, completionHandler: { (success, error) in
                         actionSheet.dismiss(animated: true, completion: {
                             if error != nil {
-                                let alertController = UIAlertController(title: "Error", message: "Couldn't follow @\(username). \(error?.localizedDescription).", preferredStyle: .alert)
+                                let alertController = UIAlertController(title: "Error", message: "Couldn't follow @\(username). \(error!.localizedDescription).", preferredStyle: .alert)
                                 
                                 alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                                 UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
