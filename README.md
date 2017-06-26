@@ -5,6 +5,11 @@ MVFollow is a tiny drop-in solution that allows you to follow people on Twitter.
 
 This library requires **iOS 10 or later**.
 
+Since Apple *deprecated* Twitter integration in iOS 11, **don't expect any future updates to MVFollow**. 
+
+![](https://github.com/marcelvoss/MVFollow/blob/master/Preview/Deprecation.png?raw=true)
+
+
 ## Installation
 ### CocoaPods
 MVFollow is available via CocoaPods. Simply add this to your Podfile: `pod 'MVFollow', '~> 0.3.0'` and install it with `pod install`. Boom!
